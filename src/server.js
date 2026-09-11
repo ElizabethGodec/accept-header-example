@@ -15,6 +15,9 @@ const onRequest = (request, response) => {
   const parsedUrl = new URL(request.url,`${protocol}://${request.headers.host}`);
   console.log(parsedUrl);
 
+  request.acceptedTypes = request.headers.accept ? request.headers.accept.split(',') : [];
+
+
   const handler = urlStruct[parsedUrl.pathname];
 
   if(handler){
